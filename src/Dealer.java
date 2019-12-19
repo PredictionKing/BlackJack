@@ -11,7 +11,7 @@ public class Dealer {
 	
 	public Dealer() {
 		giveCard(2);
-		System.out.println("[" + hand.get(0) + "]");
+		showCards();
 	}
 	
 	public void giveCard(int anzahl) {
@@ -19,5 +19,10 @@ public class Dealer {
 			hand.add(ThreadLocalRandom.current().nextInt(1, 14));
 		}
 		
+	}
+	
+	public void showCards() {
+		System.out.println("The Dealer shows:");
+		System.out.println(hand.get(0));
 	}
 }

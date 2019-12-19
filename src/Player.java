@@ -9,14 +9,24 @@ public class Player {
 	boolean busted = false;
 	
 	public Player() {
-		
+		giveCard(2);
 	}
 	
 	public void giveCard(int anzahl) {
 		for(int i = 0; i<anzahl; i++) {
 			hand.add(ThreadLocalRandom.current().nextInt(1, 14));
 		}
-		System.out.println(hand);
+		showCards();
 	}
 	
+	public void showCards() {
+		System.out.println("You have:");
+		for(int i=0;i<hand.size();i++) {	
+				System.out.print(hand.get(i));
+				if(i<hand.size()-1) {
+					System.out.print(", ");
+				}
+		}
+		System.out.println();
+	}
 }

@@ -5,14 +5,24 @@ public class BlackJackSecond {
 	
 	private Player player1;
 	private Dealer dealer;
+	private String input;
 	
-	public BlackJackSecond(Player player, Dealer dealer) {
-		this.dealer = dealer;
+	public BlackJackSecond(Dealer dealer, Player player) {
 		this.player1 = player;
-		this.player1.giveCard(2);
+		this.dealer = dealer;
+		wantAnotherCard();
 	}
 	
-	
+	public void wantAnotherCard() {
+		System.out.println("Do you want another card? (y/N)");
+		input = new java.util.Scanner(System.in).next();
+		if(input.equalsIgnoreCase("y")) {
+			player1.giveCard(1);
+			wantAnotherCard();
+		}else if(input.equalsIgnoreCase("n")) {
+			return;
+		}
+	}
 	
 	
 }
