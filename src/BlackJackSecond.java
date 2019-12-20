@@ -14,13 +14,18 @@ public class BlackJackSecond {
 	}
 	
 	public void wantAnotherCard() {
-		System.out.println("Do you want another card? (y/N)");
-		input = new java.util.Scanner(System.in).next();
-		if(input.equalsIgnoreCase("y")) {
-			player1.giveCard(1);
-			wantAnotherCard();
-		}else if(input.equalsIgnoreCase("n")) {
-			dealer.showAllCards();
+		if (player1.busted = true)
+			return;
+		else {
+			System.out.println("Do you want another card? (y/N)");
+			input = new java.util.Scanner(System.in).next();
+			if (input.equalsIgnoreCase("y")) {
+				player1.giveCard(1);
+				wantAnotherCard();
+			} else if (input.equalsIgnoreCase("n")) {
+				dealer.showAllCards();
+
+			}
 		}
 	}
 	
