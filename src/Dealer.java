@@ -25,4 +25,15 @@ public class Dealer {
 		System.out.println("The Dealer shows:");
 		System.out.println(hand.get(0));
 	}
+	
+	public void showAllCards() {
+		System.out.println("The Dealer shows:");
+		for(int i=0;i<hand.size();i++) {	
+			System.out.print(hand.get(i));
+			if(i<hand.size()-1) {
+				System.out.print(", ");
+			}
+	}
+	System.out.println();
+	}
 }

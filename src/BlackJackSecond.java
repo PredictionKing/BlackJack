@@ -20,7 +20,7 @@ public class BlackJackSecond {
 			player1.giveCard(1);
 			wantAnotherCard();
 		}else if(input.equalsIgnoreCase("n")) {
-			return;
+			dealer.showAllCards();
 		}
 	}
 	
