@@ -14,7 +14,7 @@ public class BlackJackSecond {
 	}
 	
 	public void wantAnotherCard() {
-		if (player1.busted = true)
+		if (player1.winorbust.matches("win|busted"))
 			return;
 		else {
 			System.out.println("Do you want another card? (y/N)");

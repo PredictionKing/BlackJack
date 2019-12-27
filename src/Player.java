@@ -1,4 +1,6 @@
 import javax.swing.*;
+
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -7,7 +9,7 @@ public class Player {
 
 	String name;
 	List<String> hand = new ArrayList<String>();
-	public boolean busted = false;
+	public String winorbust = "";
 	int resultplayer=0;
 
 	public Player() {
@@ -57,11 +59,12 @@ public class Player {
 
 		if (resultplayer > 21) {
 			System.out.println("You got busted");
-			System.out.println(resultplayer);
-			busted = true;
+			System.out.println("You have:\n" + resultplayer);
+			winorbust = "busted";
 		}
 		else if (resultplayer == 21) {
 			System.out.println("Blackjack!");
+			winorbust = "win";
 		}
 		else
 			resultplayer = 0;
