@@ -1,3 +1,4 @@
+import java.io.IOException;
 
 public class BlackJackSecond {
 
@@ -13,9 +14,25 @@ public class BlackJackSecond {
 		wantAnotherCard();
 	}
 	
+	public void startGame(Dealer dealer, Player player) {
+		this.player1 = player;
+		this.dealer = dealer;
+		wantAnotherCard();
+	}
+	
+	public void playAgain() {
+		System.out.println("Do you want to play again? (Y/n)");
+		String yn = new java.util.Scanner(System.in).next();
+		if(yn.equalsIgnoreCase("Y")) {
+			startGame(new Dealer(), new Player());
+		}else if (yn.equalsIgnoreCase("N")) {
+			return;
+		}
+	}
+	
 	public void wantAnotherCard() {
 		if (player1.winorbust.matches("win|busted"))
-			return;
+			playAgain();
 		else {
 			System.out.println("Do you want another card? (y/N)");
 			input = new java.util.Scanner(System.in).next();
