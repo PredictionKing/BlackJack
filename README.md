@@ -4,7 +4,8 @@ BlackJack with Chips
 # Changelog
 ## **version 1.0**
 * added play again option
-
+* added win condition
+* added busted
 
 # To Do
 
