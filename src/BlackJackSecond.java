@@ -19,6 +19,7 @@ public class BlackJackSecond {
 		this.player1 = player;
 		this.dealer = dealer;
 		wantAnotherCard();
+		drawDealer();
 	}
 
 	public void playAgain() {
@@ -49,15 +50,20 @@ public class BlackJackSecond {
 
 
 	public void drawDealer() {
+		dealer.bustedDealer();
+
 		if (dealer.busted) {
 			System.out.println("Dealer got busted!");
+			dealer.showAllCards();
 			playAgain();
 		}
 		else if (dealer.resultDealer <= 21 && dealer.resultDealer > 16){
 			WinOrLose();}
 		else {
 			dealer.giveCard(1);
-			dealer.bustedDealer();
+			// drawDealer();
+			dealer.resultDealer = 0;
+			dealer.sumDealer();
 			drawDealer();
 		}
 	}
@@ -65,9 +71,11 @@ public class BlackJackSecond {
 	public void WinOrLose() {
 		if (dealer.resultDealer > player1.resultplayer) {
 			System.out.println("Dealer has won.");
+			dealer.showAllCards();
 			playAgain();
 		} else if (dealer.resultDealer < player1.resultplayer) {
 			System.out.println("Player has won.");
+			dealer.showAllCards();
 			playAgain();
 		} else {
 			System.out.println("It's even.");

@@ -11,10 +11,10 @@ public class Dealer {
 	int resultDealer = 0;
 
 
-
 	public Dealer() {
 		giveCard(2);
 		showCard();
+		sumDealer();
 	}
 
 	public void giveCard(int anzahl) {
@@ -26,7 +26,9 @@ public class Dealer {
 				} else if (hand.get(j).equals("12")) {
 					hand.set(j, "D");
 				} else if (hand.get(j).equals("13")) {
-					hand.set(j, "K");
+					hand.set(j, "K"); }
+				else if (hand.get(j).equals("1")) {
+					hand.set(j, "Ass");
 				}
 			}
 		}
@@ -49,29 +51,35 @@ public class Dealer {
 	}
 
 
-	public void bustedDealer() {
+	public void sumDealer() {
 		for (int i = 0; i < hand.size(); i++) {
 			if (hand.get(i).matches("B|D|K")) {
 				resultDealer += 10;
 			} else if (hand.get(i).matches("Ass")) {
-				resultDealer += 11;
+				//resultDealer += 11;
+				if (resultDealer <= 11) {
+					resultDealer = resultDealer + 11; }
+				else
+					resultDealer = resultDealer + 1;
 			} else {
 				resultDealer += Integer.parseInt(hand.get(i));
 			}
 		}
-		System.out.println("test:" + resultDealer);
-
-		if (resultDealer < 17)  {
-				busted = false;
-				System.out.println("Dealer has to draw"); }
-
-		else if (resultDealer > 21) {
-			busted = true; }
-
-		else {
-			System.out.println("Dealer hat " + resultDealer);
-		}
 	}
+
+
+		public void bustedDealer(){
+			//System.out.println("test:" + resultDealer); *zum testen
+
+			if (resultDealer < 17) {
+				busted = false;
+				System.out.println("Dealer has to draw");
+			} else if (resultDealer > 21) {
+				busted = true;
+			} else {
+				System.out.println("Dealer hat " + resultDealer);
+			}
+		}
 }
 
 
