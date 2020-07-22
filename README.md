@@ -9,5 +9,5 @@ BlackJack with Chips
 
 # To Do
 
- - [ ] Dealer needs to draw card
+ - [X] Dealer needs to draw card
  - [ ] Check Dealer deck (win/bust/even)
