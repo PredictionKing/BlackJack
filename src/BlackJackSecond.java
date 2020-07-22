@@ -2,34 +2,35 @@ import java.io.IOException;
 
 public class BlackJackSecond {
 
-	int[] kartendeck = {1,2,3,4,5,6,7,8,9,10,11,12,13};
-	
+	//int[] kartendeck = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+
 	private Player player1;
 	private Dealer dealer;
 	private String input;
-	
+
 	public BlackJackSecond(Dealer dealer, Player player) {
 		this.player1 = player;
 		this.dealer = dealer;
 		wantAnotherCard();
+		drawDealer();
 	}
-	
+
 	public void startGame(Dealer dealer, Player player) {
 		this.player1 = player;
 		this.dealer = dealer;
 		wantAnotherCard();
 	}
-	
+
 	public void playAgain() {
 		System.out.println("Do you want to play again? (Y/n)");
 		String yn = new java.util.Scanner(System.in).next();
-		if(yn.equalsIgnoreCase("Y")) {
+		if (yn.equalsIgnoreCase("Y")) {
 			startGame(new Dealer(), new Player());
-		}else if (yn.equalsIgnoreCase("N")) {
+		} else if (yn.equalsIgnoreCase("N")) {
 			return;
 		}
 	}
-	
+
 	public void wantAnotherCard() {
 		if (player1.winorbust.matches("win|busted"))
 			playAgain();
@@ -45,6 +46,32 @@ public class BlackJackSecond {
 			}
 		}
 	}
-	
-	
+
+
+	public void drawDealer() {
+		if (dealer.busted) {
+			System.out.println("Dealer got busted!");
+			playAgain();
+		}
+		else if (dealer.resultDealer <= 21 && dealer.resultDealer > 16){
+			WinOrLose();}
+		else {
+			dealer.giveCard(1);
+			dealer.bustedDealer();
+			drawDealer();
+		}
+	}
+
+	public void WinOrLose() {
+		if (dealer.resultDealer > player1.resultplayer) {
+			System.out.println("Dealer has won.");
+			playAgain();
+		} else if (dealer.resultDealer < player1.resultplayer) {
+			System.out.println("Player has won.");
+			playAgain();
+		} else {
+			System.out.println("It's even.");
+			playAgain();
+		}
+	}
 }

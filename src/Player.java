@@ -36,7 +36,7 @@ public class Player {
 	}
 
 	public void showCards() {
-		System.out.println("You have:");
+		System.out.println("\nYou have:");
 		for (int i = 0; i < hand.size(); i++) {
 			System.out.print(hand.get(i));
 			if (i < hand.size() - 1) {
@@ -44,7 +44,70 @@ public class Player {
 			}
 		}
 		System.out.println();
+
+
+
+		int sum = 0;
+		for (int i = 0; i < hand.size(); i++) {
+			switch (hand.get(i)){
+				case "K":
+					sum = 10 + sum;
+					break;
+				case "Q":
+					sum = 10 + sum;
+					break;
+				case "B":
+					sum = 10 + sum;
+					break;
+				case "10":
+					sum = 10 + sum;
+					break;
+				case "9":
+					sum = 9 + sum;
+					break;
+				case "8":
+					sum = 8 + sum;
+					break;
+				case "7":
+					sum = 7 + sum;
+					break;
+				case "6":
+					sum = 6 + sum;
+					break;
+				case "5":
+					sum = 5 + sum;
+					break;
+				case "4":
+					sum = 4 + sum;
+					break;
+				case "3":
+					sum = 3 + sum;
+					break;
+				case "2":
+					sum = 2 + sum;
+					break;
+				case "1":
+					sum = 1 + sum;
+					break;
+				case "Ass":
+					if (sum <= 11) {
+						sum = sum + 11; }
+					else
+						sum = sum + 1;
+					break;
+			}
+		}
+		if (sum == 13) {
+			System.out.println("Oh! Lucky "+sum+"!");
+		}
+		else
+			System.out.println("A total of: " + sum);
+
+
+		System.out.println();
 	}
+
+
 
 	public void bustedPlayer() {
 		for (int i = 0; i < hand.size(); i++) {

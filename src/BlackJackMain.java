@@ -9,8 +9,6 @@ public class BlackJackMain {
     }else if(yn.equalsIgnoreCase("n")) {
 		return;
 	}
-
-    
     }
      
 }
