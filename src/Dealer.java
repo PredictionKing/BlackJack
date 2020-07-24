@@ -77,7 +77,7 @@ public class Dealer {
 			} else if (resultDealer > 21) {
 				busted = true;
 			} else {
-				System.out.println("Dealer hat " + resultDealer);
+				System.out.println("Dealer has " + resultDealer);
 			}
 		}
 }

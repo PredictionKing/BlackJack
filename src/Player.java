@@ -32,7 +32,6 @@ public class Player {
 			}
 		}
 		showCards();
-		bustedPlayer();
 	}
 
 	public void showCards() {
@@ -100,36 +99,17 @@ public class Player {
 		if (sum == 13) {
 			System.out.println("Oh! Lucky "+sum+"!");
 		}
-		else
+		else {
 			System.out.println("A total of: " + sum);
+		}
 
-
+		if(sum > 21){
+			System.out.println("You got busted");
+			winorbust = "busted";
+		}
+		resultplayer=sum;
 		System.out.println();
 	}
 
 
-
-	public void bustedPlayer() {
-		for (int i = 0; i < hand.size(); i++) {
-			if (hand.get(i).matches("B|Q|K")) {
-				resultplayer += 10;
-			} else if (hand.get(i).matches("Ass")) {
-				resultplayer += 11;
-			} else {
-				resultplayer += Integer.parseInt(hand.get(i));
-			}
-		}
-
-		if (resultplayer > 21) {
-			System.out.println("You got busted");
-			System.out.println("You have:\n" + resultplayer);
-			winorbust = "busted";
-		}
-		else if (resultplayer == 21) {
-			System.out.println("Blackjack!");
-			winorbust = "win";
-		}
-		else
-			resultplayer = 0;
-	}
 }
