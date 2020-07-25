@@ -9,6 +9,7 @@ public class Dealer {
 	List<String> hand = new ArrayList<String>();
 	boolean busted = false;
 	int resultDealer = 0;
+	long sleep = 5000;
 
 
 	public Dealer() {
@@ -68,7 +69,7 @@ public class Dealer {
 	}
 
 
-		public void bustedDealer(){
+		public void bustedDealer()  {
 			//System.out.println("test:" + resultDealer); *zum testen
 
 			if (resultDealer < 17) {

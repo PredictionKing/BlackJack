@@ -8,6 +8,9 @@ public class BlackJackSecond {
 	private Dealer dealer;
 	private String input;
 
+	double Highscore = 0;
+
+
 	public BlackJackSecond(Dealer dealer, Player player) {
 		this.player1 = player;
 		this.dealer = dealer;
@@ -33,7 +36,7 @@ public class BlackJackSecond {
 	}
 
 	public void wantAnotherCard() {
-		if (player1.winorbust.matches("win|busted"))
+		if (player1.winorbust.matches("win|busted")) //TODO: Change Blackjack win mit Gewinnerkennung (WinOrLose)
 			playAgain();
 		else {
 			System.out.println("Do you want another card? (y/N)");
@@ -55,6 +58,8 @@ public class BlackJackSecond {
 		if (dealer.busted) {
 			System.out.println("Dealer got busted!");
 			dealer.showAllCards();
+			Highscore++;
+			System.out.println("Dein Highscore ist: " + Highscore);
 			playAgain();
 		}
 		else if (dealer.resultDealer <= 21 && dealer.resultDealer > 16){
@@ -71,15 +76,23 @@ public class BlackJackSecond {
 	public void WinOrLose() {
 		if (dealer.resultDealer > player1.resultplayer) {
 			System.out.println("Dealer has won.");
+			Highscore--;
+			System.out.println("Dein Highscore ist: " + Highscore);
 			dealer.showAllCards();
 			playAgain();
 		} else if (dealer.resultDealer < player1.resultplayer) {
 			System.out.println("Player has won.");
 			dealer.showAllCards();
+			Highscore++;
+			System.out.println("Dein Highscore ist: " + Highscore);
 			playAgain();
 		} else {
 			System.out.println("It's even.");
+			Highscore = Highscore + 0.5;
+			System.out.println("Dein Highscore ist: " + Highscore);
 			playAgain();
+
 		}
 	}
 }
+
