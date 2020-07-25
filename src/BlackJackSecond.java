@@ -2,18 +2,17 @@ import java.io.IOException;
 
 public class BlackJackSecond {
 
-	//int[] kartendeck = {1,2,3,4,5,6,7,8,9,10,11,12,13};
-
 	private Player player1;
 	private Dealer dealer;
 	private String input;
 
-	double Highscore = 0;
+	double Highscore;
 
 
-	public BlackJackSecond(Dealer dealer, Player player) {
+	public BlackJackSecond(Dealer dealer, Player player, double Highscore) {
 		this.player1 = player;
 		this.dealer = dealer;
+		this.Highscore = Highscore;
 		wantAnotherCard();
 		drawDealer();
 	}
@@ -36,7 +35,7 @@ public class BlackJackSecond {
 	}
 
 	public void wantAnotherCard() {
-		if (player1.winorbust.matches("win|busted")) //TODO: Change Blackjack win mit Gewinnerkennung (WinOrLose)
+		if (player1.winorbust.matches("win|busted"))
 			playAgain();
 		else {
 			System.out.println("Do you want another card? (y/N)");
@@ -77,19 +76,19 @@ public class BlackJackSecond {
 		if (dealer.resultDealer > player1.resultplayer) {
 			System.out.println("Dealer has won.");
 			Highscore--;
-			System.out.println("Dein Highscore ist: " + Highscore);
+			System.out.println("Dein Highscore ist: " + (int) Highscore);
 			dealer.showAllCards();
 			playAgain();
 		} else if (dealer.resultDealer < player1.resultplayer) {
 			System.out.println("Player has won.");
 			dealer.showAllCards();
 			Highscore++;
-			System.out.println("Dein Highscore ist: " + Highscore);
+			System.out.println("Dein Highscore ist: " + (int) Highscore);
 			playAgain();
 		} else {
 			System.out.println("It's even.");
 			Highscore = Highscore + 0.5;
-			System.out.println("Dein Highscore ist: " + Highscore);
+			System.out.println("Dein Highscore ist: " + (int) Highscore);
 			playAgain();
 
 		}
