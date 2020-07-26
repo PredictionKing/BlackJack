@@ -9,7 +9,9 @@ public class BlackJackMain {
         try (InputStream input = new FileInputStream("config.properties")) {
             Properties prop = new Properties();
             prop.load(input);
-            Highscore = Double.valueOf(prop.getProperty("Highscore")) ;
+            if(!prop.isEmpty()) {
+                Highscore = Double.valueOf(prop.getProperty("Highscore"));
+            }
         }
         catch (IOException ex) {
             ex.printStackTrace();
